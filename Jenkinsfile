@@ -1,9 +1,9 @@
 pipeline{
     agent any
     node {
-        triggers{
+      /*  triggers{
             pollSCM 'H/20 * * * *'
-        }
+        } */
         stages{
             stage("git checkout"){
                 steps{
