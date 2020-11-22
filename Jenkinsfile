@@ -1,26 +1,9 @@
-pipeline{
-    agent any
-    node {
-      /*  triggers{
-            pollSCM 'H/20 * * * *'
-        } */
-        stages{
-            stage("git checkout"){
-                steps{
-                    // git credentialsId: 'github', url: 'https://github.com/FatihMert1/Jenkins-Meeting.git'
-                    
-                }
-                post{
-                    always{
-                        echo "========always========"
-                    }
-                    success{
-                        echo "========build executed successfully========"
-                    }
-                    failure{
-                        echo "========build execution failed========"
-                    }
-                }
+pipeline {
+    agent { docker { image 'mcr.microsoft.com/dotnet/core/sdk:3.1' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'dotnet --version'
             }
         }
     }
