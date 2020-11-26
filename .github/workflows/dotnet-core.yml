@@ -13,18 +13,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
+    
     - name: Install dependencies
       run: dotnet restore
+    
     - name: Build
       run: dotnet build --configuration Release --no-restore
+    
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@1.26.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        WITH_V: true
+
+    - name: Docker build and publish
+      uses: HurricanKai/Publish-Docker-Github-Action@master
+        with:
+          username: ${{secrets.DOCKER_USER_NAME}}
+          password: ${{secrets.PASSWORD}}
+          tagging: true
+
+
+
