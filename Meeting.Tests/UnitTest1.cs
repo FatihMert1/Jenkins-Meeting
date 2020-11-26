@@ -13,7 +13,7 @@ namespace Meeting.Tests
             
 
             var controller = new WeatherForecastController(null);
-            Assert.IsType<IEnumerable<WeatherForecast>>(controller.Get());
+            Assert.IsType<WeatherForecast>(controller.Get());
         }
     }
 }
