@@ -1,6 +1,7 @@
 using System;
 using Xunit;
 using Meeting.Controllers;
+using System.Collections.Generic;
 
 namespace Meeting.Tests
 {
@@ -12,7 +13,7 @@ namespace Meeting.Tests
             
 
             var controller = new WeatherForecastController(null);
-            Assert.IsType<Int32>(controller.Get());
+            Assert.IsType<IEnumerable<WeatherForecast>>(controller.Get());
         }
     }
 }
