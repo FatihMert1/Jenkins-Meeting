@@ -30,7 +30,7 @@ jobs:
 
     - name: Docker build and publish
       uses: HurricanKai/Publish-Docker-Github-Action@master
-        with:
+      with:
           username: ${{secrets.DOCKER_USER_NAME}}
           password: ${{secrets.PASSWORD}}
           tagging: true
